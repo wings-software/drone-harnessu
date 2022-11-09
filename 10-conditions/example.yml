@@ -1,0 +1,30 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: successful step
+  image: ubuntu
+  commands:
+  - echo "all is well"
+  - exit 0
+
+- name: failed step
+  image: ubuntu
+  commands:
+  - echo "this will fail"
+  - exit 1
+
+- name: failure message
+  image: ubuntu
+  when:
+    status:
+    - failure
+  commands:
+  - echo "a step failed"
+
+- name: successful message
+  image: ubuntu
+  commands:
+  - echo "all steps completed successfully"
+

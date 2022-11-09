@@ -1,0 +1,18 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: always run
+  image: ubuntu
+  commands:
+  - echo "this step will always run"
+
+- name: pull request
+  image: ubuntu
+  when:
+    event:
+    - pull_request
+  commands:
+  - echo "a pull request was opened"
+

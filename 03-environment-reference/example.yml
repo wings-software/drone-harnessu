@@ -1,0 +1,10 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: started
+  image: ubuntu
+  commands:
+  - echo $DRONE_BUILD_STARTED
+

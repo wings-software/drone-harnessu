@@ -1,0 +1,15 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: write file
+  image: ubuntu
+  commands:
+  - uname -s | tee output.txt
+
+- name: ls file
+  image: ubuntu
+  commands:
+  - ls output.txt
+

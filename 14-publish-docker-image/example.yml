@@ -1,0 +1,31 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: pull request
+  image: plugins/docker
+  when:
+    event:
+    - pull_request
+  settings:
+    dry_run: true
+    repo: drone-hello-world
+    tags:
+    - latest
+
+- name: publish
+  image: plugins/docker
+  when:
+    branch:
+    - main
+  settings:
+    username:
+      from_secret: dockerhub_user
+    password:
+      from_secret: dockerhub_token
+    repo:
+      from_secret: dockerhub_repo
+    tags:
+    - latest
+

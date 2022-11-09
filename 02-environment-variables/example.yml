@@ -1,0 +1,19 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: hello world
+  image: ubuntu
+  environment:
+    MY_MESSAGE: hello world
+  commands:
+  - echo $MY_MESSAGE
+
+- name: goodbye
+  image: ubuntu
+  environment:
+    MY_MESSAGE: goodbye
+  commands:
+  - echo $MY_MESSAGE
+

@@ -1,0 +1,13 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: secret
+  image: ubuntu
+  environment:
+    MY_SECRET:
+      from_secret: sensitive
+  commands:
+  - echo $MY_SECRET
+

@@ -1,0 +1,25 @@
+kind: pipeline
+type: docker
+name: default
+
+volumes:
+- name: data-volume
+  temp: {}
+
+steps:
+- name: write message
+  image: ubuntu
+  volumes:
+  - name: data-volume
+    path: /data
+  commands:
+  - echo 'Hello, World!' > /data/message.txt
+
+- name: show message
+  image: ubuntu
+  volumes:
+  - name: data-volume
+    path: /data
+  commands:
+  - cat /data/message.txt
+

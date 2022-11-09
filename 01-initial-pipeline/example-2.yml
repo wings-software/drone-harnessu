@@ -1,0 +1,15 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: hello world
+  image: ubuntu
+  commands:
+  - echo hello world
+
+- name: goodbye
+  image: ubuntu
+  commands:
+  - echo goodbye
+
